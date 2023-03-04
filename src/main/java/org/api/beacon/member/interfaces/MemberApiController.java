@@ -25,7 +25,7 @@ public class MemberApiController {
     // 회원 가입
 
     @PostMapping
-    public ResponseEntity signUp(@RequestBody MemberRequestDto memberRequestDto) {
+    public ResponseEntity<Member> signUp(@RequestBody MemberRequestDto memberRequestDto) {
         Member newMember = memberService.signUp(memberRequestDto);
         WebMvcLinkBuilder selfLinkBuilder = linkTo(MemberApiController.class).slash(newMember.getId());
         URI createUri = selfLinkBuilder.toUri();

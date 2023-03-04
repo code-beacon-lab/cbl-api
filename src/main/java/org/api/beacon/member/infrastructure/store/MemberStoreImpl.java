@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MemberStoreImpl implements MemberStore {
     private final MemberRepository memberRepository;
+
     @Override
     public Member store(Member member) {
         validate(member);
@@ -17,7 +18,8 @@ public class MemberStoreImpl implements MemberStore {
     }
 
     private void validate(Member member) {
-        if(member.getLoginId() == null) {
-            throw new IllegalArgumentException("Member.loginId");} // TODO InvalidParameterException
+        if (member.getLoginId() == null) {
+            throw new IllegalArgumentException("Member.loginId");
+        } // TODO InvalidParameterException
     }
 }

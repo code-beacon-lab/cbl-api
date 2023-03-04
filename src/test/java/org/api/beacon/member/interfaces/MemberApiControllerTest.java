@@ -9,8 +9,6 @@ import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.LocalDateTime;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -43,6 +41,7 @@ class MemberApiControllerTest {
                 .andDo(print())
                 .andExpect(status().isCreated());
     }
+
     @Test
     void retrieveMember() throws Exception {
         mockMvc.perform(get("/api/member").param("id", "1"))

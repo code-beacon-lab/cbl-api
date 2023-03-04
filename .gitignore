@@ -40,3 +40,4 @@ config.properties
 
 ### external solution sample ###
 sample/
+/src/main/resources/application-*.yml
