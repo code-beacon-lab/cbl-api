@@ -6,10 +6,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -20,7 +18,7 @@ class MemberApiControllerTest {
 
     @Test
     void retrieveMember() throws Exception {
-        mockMvc.perform(get("/member").param("id","1"))
+        mockMvc.perform(get("/api/member").param("id", "1"))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
         ;
