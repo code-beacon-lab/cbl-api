@@ -22,4 +22,5 @@ public class MemberApiController {
     public ResponseEntity<MemberResponseDto> retrieveMember(@RequestBody String memberId) {
         return ResponseEntity.ok(memberService.retrieveMember(Long.valueOf(memberId)));
     }
+
 }

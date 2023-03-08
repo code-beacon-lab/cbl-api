@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.api.beacon.study.application.StudyService;
 import org.api.beacon.study.domain.Study;
 import org.api.beacon.study.infrastructure.StudyRepository;
-import org.api.beacon.study.infrastructure.creator.StudyCreator;
-import org.api.beacon.study.infrastructure.reader.StudyReader;
+import org.api.beacon.study.domain.StudyCreator;
+import org.api.beacon.study.domain.StudyReader;
 import org.api.beacon.study.infrastructure.updater.StudyUpdater;
 import org.springframework.stereotype.Service;
 
@@ -22,14 +22,14 @@ public class StudyServiceImpl implements StudyService {
     private final StudyUpdater studyUpdater;
 
     @Override
-    public void createStudy(Study study) {
+    public Study createStudy(Study study) {
         studyCreator.saveStudy(study);
+        return study;
     }
 
     @Override
     public Optional<Study> retrieveStudy(Long id) {
-        studyRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("조회할 ID 의 스터디가 없습니다 : "+id));
-        return studyReader.getStudy(id);
+        return Optional.ofNullable(studyRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("조회할 ID 의 스터디가 없습니다 : " + id)));
     }
 
     @Override

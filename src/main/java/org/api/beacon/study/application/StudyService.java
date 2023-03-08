@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface StudyService {
 
-    public void createStudy(Study study);
+    Study createStudy(Study study);
     Optional<Study> retrieveStudy(Long id);
     List<Study> retrieveStudies();
     Study modifyStudy(Long id, Study study);

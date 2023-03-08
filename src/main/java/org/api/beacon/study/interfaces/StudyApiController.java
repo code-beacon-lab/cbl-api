@@ -17,8 +17,9 @@ public class StudyApiController {
     private final StudyService studyService;
 
     @PostMapping(value = "/studies")
-    public void createStudy(@RequestBody Study study) {
+    public Study createStudy(@RequestBody Study study) {
         studyService.createStudy(study);
+        return study;
     }
 
     @GetMapping(value = "/studies/{id}")

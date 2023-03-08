@@ -1,4 +1,4 @@
-package org.api.beacon.study.infrastructure.reader;
+package org.api.beacon.study.domain;
 
 import org.api.beacon.study.domain.Study;
 

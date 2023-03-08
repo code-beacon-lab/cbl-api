@@ -1,4 +1,4 @@
-package org.api.beacon.study.infrastructure.creator;
+package org.api.beacon.study.domain;
 
 import org.api.beacon.study.domain.Study;
 import org.api.beacon.study.infrastructure.StudyRepository;

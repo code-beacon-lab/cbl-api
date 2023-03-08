@@ -2,6 +2,7 @@ package org.api.beacon.study.infrastructure.reader;
 
 import lombok.RequiredArgsConstructor;
 import org.api.beacon.study.domain.Study;
+import org.api.beacon.study.domain.StudyReader;
 import org.api.beacon.study.infrastructure.StudyRepository;
 import org.springframework.stereotype.Component;
 
