@@ -5,8 +5,6 @@ import org.api.beacon.study.domain.Study;
 import org.api.beacon.study.infrastructure.StudyRepository;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
 @Component
 @RequiredArgsConstructor
 public class StudyUpdaterImpl implements StudyUpdater {

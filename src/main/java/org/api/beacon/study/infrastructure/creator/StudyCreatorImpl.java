@@ -6,8 +6,6 @@ import org.api.beacon.study.domain.StudyCreator;
 import org.api.beacon.study.infrastructure.StudyRepository;
 import org.springframework.stereotype.Component;
 
-import static java.time.LocalTime.now;
-
 
 @Component
 @RequiredArgsConstructor
