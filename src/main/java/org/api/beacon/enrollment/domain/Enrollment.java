@@ -1,14 +1,22 @@
 package org.api.beacon.enrollment.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.api.beacon.member.domain.Member;
+import org.api.beacon.study.domain.Study;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.api.beacon.member.domain.Member;
-import org.api.beacon.study.domain.Study;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Getter
 @Builder
