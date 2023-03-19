@@ -4,6 +4,12 @@ server:
 spring:
   profiles:
     active: local
+  thymeleaf:
+    cache: false
+  mvc:
+    hidden-method:
+      filter:
+        enabled: true
 
   #  database setting
   h2:

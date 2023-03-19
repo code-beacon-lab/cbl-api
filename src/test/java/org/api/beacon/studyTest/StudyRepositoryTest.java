@@ -23,7 +23,6 @@ public class StudyRepositoryTest {
     @Test
     @Rollback(false)
     public void saveStudyTest() {
-
         Study study = Study.builder()
                 .id(1L)
                 .name("스터티이름")
@@ -38,8 +37,7 @@ public class StudyRepositoryTest {
 
         studyCreator.saveStudy(study);
         Optional<Study> getStudy = studyRepository.findById(study.getId());
-        System.out.println("getStudy="+getStudy.get().getName());
-    }
+}
 
 
 

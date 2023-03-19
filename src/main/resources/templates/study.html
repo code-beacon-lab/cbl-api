@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>스터디 상세페이지 - 타임리프</title>
+    <!-- Required meta tags -->
+    <meta charset="application/json" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"/>
+</head>
+
+<body>
+    <main role="main" class="container">
+<!--        <form id="update-form" th:action="@{'/api/studies/' + ${study.id}}" th:object="${study}" th:method="post">-->
+            <input type="hidden" name="_method" value="put">
+                <div class="starter-template">
+                    <table class ="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <th>스터디 제목</th>
+                            <td><input type="text" id="name" th:value="${study.getName()}"></td>
+                        </tr>
+                        <tbody>
+                        <tr>
+                            <th>작성자</th>
+                            <td id="regId" th:text="${study.getRegId()}"></td>
+                        </tr>
+                        <tr>
+                            <th>작성일</th>
+                            <td th:text="${study.getCrtDt()}"></td>
+                        </tr>
+                        <tr>
+                            <th>스터디 설명</th>
+                            <td><input type="text" id="description" th:value="${study.getDescription()}"></td>
+                        </tr>
+                        <tr>
+                            <th>스터디 제한</th>
+                            <td><input type="text" id="limit" th:value="${study.getLimit()}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            <button class="btn btn-primary" onclick="updateData()">수정</button>
+<!--        </form>-->
+        <form id="delete-form" th:action="@{'/api/studies/' + ${study.id}}" th:method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button class="btn btn-warning" id="delete-btn">삭제</button>
+        </form>
+    </main>
+</body>
+<script>
+function updateData() {
+
+    const name = document.getElementById("name").value;
+    const description = document.getElementById("description").value;
+    const limit = document.getElementById("limit").value;
+    const headers = {"Content-Type": "application/json", "X-HTTP-Method-Override": "POST"};
+    console.log(name);
+    let params =
+        {
+            "name": name,
+            "description" : description,
+            "limit" : limit
+        }
+
+    $.ajax({
+        url: '/api/studies/1',
+        type: "PUT",
+        headers: headers,
+        dataType: "json",
+        data: JSON.stringify(params),
+        success: function (response) {
+            console.log(response);
+        },
+        error: function(xhr, status, error) {
+            alert("에러가 발생하였습니다.");
+            return false;
+        }
+    });
+}
+</script>
+</html>

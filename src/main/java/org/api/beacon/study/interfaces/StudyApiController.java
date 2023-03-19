@@ -6,9 +6,9 @@ import org.api.beacon.study.domain.Study;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping(value = "/api")
 @RestController
 @RequiredArgsConstructor
+@RequestMapping(value = "/api")
 public class StudyApiController {
 
     private final StudyService studyService;
