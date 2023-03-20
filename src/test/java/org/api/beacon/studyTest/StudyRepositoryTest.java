@@ -37,10 +37,5 @@ public class StudyRepositoryTest {
 
         studyCreator.saveStudy(study);
         Optional<Study> getStudy = studyRepository.findById(study.getId());
-}
-
-
-
-
-
+    }
 }
