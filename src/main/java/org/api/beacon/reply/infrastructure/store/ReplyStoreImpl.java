@@ -24,15 +24,4 @@ public class ReplyStoreImpl implements ReplyStore {
         return replyRepository.save(reply);
     }
 
-    private void vaildate(Reply reply) {
-        if(reply.getReplyDetail() == null) {
-            throw new IllegalArgumentException("reply.replyDetail");
-        }
-    }
-
-    private void vaildate(Long id) {
-        if(id == null || id == 0) {
-            throw new IllegalArgumentException("reply.id");
-        }
-    }
 }

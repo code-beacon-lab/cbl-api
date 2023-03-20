@@ -3,6 +3,7 @@ package org.api.beacon.reply.application;
 import org.api.beacon.reply.domain.Reply;
 import org.api.beacon.reply.interfaces.ReplyRequestDto;
 import org.api.beacon.reply.interfaces.ReplyResponseDto;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

@@ -10,8 +10,7 @@ import javax.persistence.*;
 * @Title : 댓글 엔터티
 * @Writer : seonguk092
 * */
-//@AllArgsConstructor
-//@NoArgsConstructor(access = AccessLevel.PROTECTED)
+
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
@@ -55,7 +54,6 @@ public class Reply {
 
     public static Reply createReply(ReplyRequestDto replyRequestDto) {
         return Reply.builder()
-                .id(replyRequestDto.getId())
                 .memberEmail(replyRequestDto.getMemberEmail())
                 .studyId(replyRequestDto.getStudyId())
                 .replyDetail(replyRequestDto.getReplyDetail())
@@ -66,10 +64,9 @@ public class Reply {
                 .build();
     }
 
-    public void updateReply(Long id, String replyDetail, String updId, String updDt) {
-        this.id = id;
-        this.replyDetail = replyDetail;
-        this.updId = updId;
-        this.updDt = updDt;
+    public void updateReply(ReplyRequestDto replyRequestDto) {
+        this.replyDetail = replyRequestDto.getReplyDetail();
+        this.updId = replyRequestDto.getUpdId();
+        this.updDt = replyRequestDto.getUpdDt();
     }
 }

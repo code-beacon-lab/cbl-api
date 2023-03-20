@@ -47,17 +47,10 @@ public class ReplyServiceImpl implements ReplyService {
     @Transactional
     public Reply updateReply(ReplyRequestDto replyRequestDto) {
 
-        Reply replyOrigin = replyRepository.findById(replyRequestDto.getId()).orElseThrow(() -> new IllegalArgumentException("업데이트할 ID 의 스터디가 없습니다 : "+replyRequestDto.getId()));
+        Reply replyOrigin = replyRepository.findById(replyRequestDto.getId()).orElseThrow(() -> new IllegalArgumentException("업데이트할 ID 의 스터디가 없습니다 : " + replyRequestDto.getId() ));
 
-        replyOrigin.updateReply(
-                replyRequestDto.getId()
-              , replyRequestDto.getReplyDetail()
-              , replyRequestDto.getUpdId()
-              , replyRequestDto.getUpdDt()
-        );
+        replyOrigin.updateReply(replyRequestDto);
 
-        Reply updateReply = replyStore.updateReply(replyOrigin);
-
-        return updateReply;
+        return replyStore.updateReply(replyOrigin);
     }
 }

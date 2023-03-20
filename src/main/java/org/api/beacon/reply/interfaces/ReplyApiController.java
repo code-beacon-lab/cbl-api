@@ -22,9 +22,8 @@ public class ReplyApiController {
         this.replyService = replyService;
     }
 
-    // 게시물에 대한 댓글 전체 조회
-    @GetMapping(value="/{studyId}")
-    public ResponseEntity<List<Reply>> retrieveAllReply(@PathVariable("studyId") String studyId) {
+    @GetMapping
+    public ResponseEntity<List<Reply>> retrieveAllReply(@RequestBody String studyId) {
         return ResponseEntity.ok(replyService.retrieveAllReply(Long.valueOf(studyId)));
     }
 
