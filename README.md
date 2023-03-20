@@ -22,6 +22,7 @@
 - 댓글 수정 API 수정 : getter로 필드별 파라미터 만들어둔 것 DTO로 처리
 - 댓글 삽입 API 수정 : reply_id를 만드는 곳은 DB로 결정 후 builder에 id 생성하는 부분 삭제 처리
 - 댓글 조회 API 수정중 : study id를 URI로 받아오는 것이 아닌 BODY에서 study_id를 받아와 처리하게끔 수정 예정
+- 필요없는 함수, 주석 삭제 : 테스트용 주석 삭제처리, 사용하지 않는 vdildate 함수 삭제 처리
 
 ### 버전 관리 방식에 대해서
 - issue -> commit -> PR -> review -> merge
