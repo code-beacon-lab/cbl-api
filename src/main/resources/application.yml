@@ -27,3 +27,16 @@ spring:
       hibernate:
         format_sql: true
         show_sql: true
+
+  # dev tools
+  devtools:
+    livereload:
+      enabled: true
+
+  # ThymeleafProperties
+  thymeleaf:
+    cache: false # 운영에서는 true
+
+logging:
+  level:
+    root: info # debug

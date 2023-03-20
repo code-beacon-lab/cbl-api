@@ -12,6 +12,6 @@ public class MainUIController {
 
     @GetMapping("/test")
     public String testPage() {
-        return "test/index";
+        return "pages/test/index";
     }
 }
