@@ -20,8 +20,8 @@ public class StudyApiController {
     }
 
     @GetMapping(value = "/studies/{id}")
-    public ResponseEntity<StudyResponseDto> retrieveStudy(@PathVariable("id") String id) {
-        return ResponseEntity.ok(studyService.retrieveStudy(Long.valueOf((id))));
+    public ResponseEntity<StudyResponseDto> retrieveStudy(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(studyService.retrieveStudy(id));
     }
 
     @GetMapping(value = "/studies/list/{regId}")
@@ -32,13 +32,13 @@ public class StudyApiController {
     }
 
     @PutMapping(value = "/studies/{id}")
-    public ResponseEntity<StudyResponseDto> modifyStudy(@PathVariable("id") String id, @RequestBody Study study) {
-        return ResponseEntity.ok(studyService.modifyStudy(Long.valueOf(id), study));
+    public ResponseEntity<StudyResponseDto> modifyStudy(@PathVariable("id") Long id, @RequestBody StudyRequestDto studyRequestDto) {
+        return ResponseEntity.ok(studyService.modifyStudy(id, studyRequestDto));
     }
 
     @DeleteMapping(value = "/studies/{id}")
-    Boolean deleteStudy(@PathVariable("id") String id) {
-        return studyService.deleteStudy(Long.valueOf(id));
+    Boolean deleteStudy(@PathVariable("id") Long id) {
+        return studyService.deleteStudy(id);
     }
 
 }

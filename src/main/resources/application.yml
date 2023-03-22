@@ -4,12 +4,6 @@ server:
 spring:
   profiles:
     active: local
-  thymeleaf:
-    cache: false
-  mvc:
-    hidden-method:
-      filter:
-        enabled: true
 
   #  database setting
   h2:
@@ -42,6 +36,10 @@ spring:
   # ThymeleafProperties
   thymeleaf:
     cache: false # 운영에서는 true
+  mvc:
+    hidden-method:
+      filter:
+        enabled: true
 
 logging:
   level:
