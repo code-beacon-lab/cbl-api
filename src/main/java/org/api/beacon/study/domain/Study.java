@@ -4,16 +4,20 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.api.beacon.study.interfaces.StudyRequestDto;
+import org.springframework.util.ObjectUtils;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 
 @Entity(name = "TB_STUDY")
-@Getter //@Setter 제거 -> 생성자방식으로 주입
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter //@Setter 제거 -> 생성자방식으로 주입
 public class Study extends CommonTime {
 
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)   //MySQL - auto_increment setting
@@ -31,6 +35,7 @@ public class Study extends CommonTime {
 
     @Column(name = "recruit_limit")
     @NotNull(message = "스터티인원 제한 미기재 오류")
+    @Positive(message = "제한인원 음수 기재 오류") // 양수만 허용
     private Long limit;
 
     @Column(name = "reg_id")
@@ -60,10 +65,29 @@ public class Study extends CommonTime {
         this.deadlineDt = study.getDeadlineDt();
         this.endDt = study.getEndDt();
     }
-    public void updateStudy(String name, String description, Long limit) {
-        this.name = name;
-        this.description = description;
-        this.limit = limit;
+    public void updateStudy(StudyRequestDto studyRequestDto) {
+
+        if(!ObjectUtils.isEmpty(studyRequestDto.getName()))
+            this.name = studyRequestDto.getName();
+        /*  위 코드와 동일, 이해를 돕기위해 주석 남김
+            if(!(studyRequestDto.getName() == null || studyRequestDto.getName().isEmpty())) {
+                this.name = studyRequestDto.getName();
+            }
+        */
+        if(!ObjectUtils.isEmpty(studyRequestDto.getDescription()))
+            this.description = studyRequestDto.getDescription();
+
+        if(!ObjectUtils.isEmpty(studyRequestDto.getLimit()))
+            this.limit = studyRequestDto.getLimit();
+
+        if(!ObjectUtils.isEmpty(studyRequestDto.getRecruitmentDt()))
+            this.recruitmentDt = studyRequestDto.getRecruitmentDt();
+
+        if(!ObjectUtils.isEmpty(studyRequestDto.getDeadlineDt()))
+            this.deadlineDt = studyRequestDto.getDeadlineDt();
+
+        if(!ObjectUtils.isEmpty(studyRequestDto.getEndDt()))
+            this.endDt = studyRequestDto.getEndDt();
     }
 
     public void updateStudy(String description, Long limit) {
