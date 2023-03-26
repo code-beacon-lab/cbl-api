@@ -1,6 +1,8 @@
 package org.api.beacon.front;
 
 import lombok.RequiredArgsConstructor;
+import org.api.beacon.reply.application.ReplyService;
+import org.api.beacon.reply.domain.Reply;
 import org.api.beacon.study.application.StudyService;
 import org.api.beacon.study.domain.Study;
 import org.api.beacon.study.interfaces.StudyResponseDto;
@@ -19,12 +21,16 @@ import java.util.Optional;
 public class FrontController {  //타임리프 테스트용 프론트 페이지 컨트롤러
 
     private final StudyService studyService;
+    private final ReplyService replyService;
 
     @GetMapping(value = "/study/{id}") // 스터디 상세페이지(수정,삭제)
     public ModelAndView getStudyPage(@PathVariable("id") Long id){
         ModelAndView mav = new ModelAndView();
         StudyResponseDto study = studyService.retrieveStudy(id);
+        List<Reply> replyList = replyService.retrieveAllReply(id);
+
         mav.addObject("study", study);
+        mav.addObject("replyList", replyList);
         mav.setViewName("study");
         return mav;
     }

@@ -50,6 +50,34 @@
             <input type="hidden" name="_method" value="delete">
             <button class="btn btn-warning" id="delete-btn">삭제</button>
         </form>
+
+
+<!--    댓글 시작 -->
+        <div class="jumbotron">
+            <h1 class="display-4">댓글</h1>
+        </div>
+
+        <table class="table table-hover table-dark">
+            <thead>
+            <tr>
+                <th scope="col">댓글 아이디</th>
+                <th>작성자</th>
+                <th>댓글 내용</th>
+                <th>작성일</th>
+                <th>작성시간</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="replyList, idx :  ${replyList}">
+                <th th:text="${replyList.getId()}"></th>
+                <th th:text="${replyList.getMemberEmail()}"></th>
+                <th th:text="${replyList.getReplyDetail()}"></th>
+                <th th:text="${replyList.getCrtId()}"></th>
+                <th th:text="${replyList.getCrtDt()}"></th>
+            </tr>
+            </tbody>
+        </table>
+<!--    댓글 끝 -->
     </main>
     <script>
         function updateData() {
