@@ -13,19 +13,23 @@ import org.api.beacon.study.domain.Study;
 public class StudyResponseDto {
     private Long id;
     private String name;
+    private String regId;
     private String description;
     private Long limit;
     private String recruitmentDt;
     private String deadlineDt;
     private String endDt;
+    private String crtDt;
 
     public StudyResponseDto(Study study) {
         this.id = study.getId();
         this.name = study.getName();
+        this.regId = study.getRegId();
         this.description = study.getDescription();
         this.limit = study.getLimit();
         this.recruitmentDt = study.getRecruitmentDt();
         this.deadlineDt = study.getDeadlineDt();
         this.endDt = study.getEndDt();
+        this.crtDt = study.getCrtDt();
     }
 }

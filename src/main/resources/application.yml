@@ -37,6 +37,12 @@ spring:
   thymeleaf:
     cache: false # 운영에서는 true
 
+  # form hidden method param
+  mvc:
+    hidden-method:
+      filter:
+        enabled: true
+
 logging:
   level:
     root: info # debug

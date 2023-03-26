@@ -23,7 +23,6 @@ public class StudyRepositoryTest {
     @Test
     @Rollback(false)
     public void saveStudyTest() {
-
         Study study = Study.builder()
                 .id(1L)
                 .name("스터티이름")
