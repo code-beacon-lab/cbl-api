@@ -39,8 +39,9 @@ public class StudyServiceImpl implements StudyService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<StudyResponseDto> retrieveStudies(String regId) {
-        return studyRepository.findAllByRegId(regId);
+    public List<Study> retrieveStudies() {
+        //TODO StudyRepository 사용하려면 findAll 함수 사용 시 StudyResponseDto 사용이 불가능한 이슈 -> Dto 전용 Repository 생성 or 해결 방법?
+        return studyRepository.findAll();
     }
 
     @Override
@@ -51,7 +52,6 @@ public class StudyServiceImpl implements StudyService {
         return new StudyResponseDto(studyUpdater.updateStudy(id, studyOrigin));
     }
 
-    //TODO deleter 패키지를 만들것인가..?
     @Override
     @Transactional
     public Boolean deleteStudy(Long id) {

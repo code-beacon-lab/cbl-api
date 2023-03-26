@@ -9,5 +9,7 @@ import java.util.List;
 
 
 public interface StudyRepository extends JpaRepository<Study, Long>, JpaSpecificationExecutor<StudyResponseDto> {
+
+    // 사용자 기준 스터디 조회
     List<StudyResponseDto> findAllByRegId(String regId);
 }

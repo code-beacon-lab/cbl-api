@@ -10,7 +10,7 @@ public interface StudyService {
 
     Study createStudy(Study study);
     StudyResponseDto retrieveStudy(Long id);
-    List<StudyResponseDto> retrieveStudies(String regId);
+    List<Study> retrieveStudies();
     StudyResponseDto modifyStudy(Long id, StudyRequestDto studyRequestDto);
     Boolean deleteStudy(Long id);
 }
