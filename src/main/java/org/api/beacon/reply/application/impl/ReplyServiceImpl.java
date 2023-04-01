@@ -31,7 +31,7 @@ public class ReplyServiceImpl implements ReplyService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true) // readOnly true시 변경 감지 스냅샷을 유지 않아도 되어 메모리 절약 가능
     public List<Reply> retrieveAllReply(Long studyId) {
         return replyReader.getReplyAllByStudyId(studyId);
     }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko" layout:decorate="~{layout/layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="reply(replyList)">
+    <div class="jumbotron">
+        <h1 class="display-4">댓글</h1>
+    </div>
+
+    <table class="table table-hover table-dark">
+        <thead>
+        <tr>
+            <th scope="col">댓글 아이디</th>
+            <th>작성자</th>
+            <th>댓글 내용</th>
+            <th>작성일</th>
+            <th>작성시간</th>
+        </tr>
+        </thead>
+<!--        <tbody th:text="${replyList}"></tbody>-->
+        <tbody>
+        <tr th:each="replyList:  ${replyList}">
+            <th th:text="${replyList?.getId()}"></th>
+            <th th:text="${replyList?.getMemberEmail()}"></th>
+            <th th:text="${replyList?.getReplyDetail()}"></th>
+            <th th:text="${replyList?.getCrtId()}"></th>
+            <th th:text="${replyList?.getCrtDt()}"></th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

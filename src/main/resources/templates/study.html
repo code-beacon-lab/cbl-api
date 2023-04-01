@@ -50,34 +50,13 @@
             <input type="hidden" name="_method" value="delete">
             <button class="btn btn-warning" id="delete-btn">삭제</button>
         </form>
+        <!--
+            th:insert : div안에 include한 요소를 생성
+            th:replace : 바로 include 요소 생성
 
-
-<!--    댓글 시작 -->
-        <div class="jumbotron">
-            <h1 class="display-4">댓글</h1>
-        </div>
-
-        <table class="table table-hover table-dark">
-            <thead>
-            <tr>
-                <th scope="col">댓글 아이디</th>
-                <th>작성자</th>
-                <th>댓글 내용</th>
-                <th>작성일</th>
-                <th>작성시간</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="replyList, idx :  ${replyList}">
-                <th th:text="${replyList.getId()}"></th>
-                <th th:text="${replyList.getMemberEmail()}"></th>
-                <th th:text="${replyList.getReplyDetail()}"></th>
-                <th th:text="${replyList.getCrtId()}"></th>
-                <th th:text="${replyList.getCrtDt()}"></th>
-            </tr>
-            </tbody>
-        </table>
-<!--    댓글 끝 -->
+            replyList : studyController 에서 보내주는 댓글 데이터 리스트
+        -->
+        <div th:insert="~{reply :: reply(${replyList})}"></div>
     </main>
     <script>
         function updateData() {
