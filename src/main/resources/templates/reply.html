@@ -20,7 +20,7 @@
         </thead>
 <!--        <tbody th:text="${replyList}"></tbody>-->
         <tbody>
-        <tr th:each="replyList:  ${replyList}">
+        <tr th:each="replyList: ${replyList}" th:if="${replyList.getReplyState()}">
             <th th:text="${replyList?.getId()}"></th>
             <th th:text="${replyList?.getMemberEmail()}"></th>
             <th th:text="${replyList?.getReplyDetail()}"></th>

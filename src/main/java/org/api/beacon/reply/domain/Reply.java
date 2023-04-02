@@ -2,6 +2,8 @@ package org.api.beacon.reply.domain;
 
 import lombok.*;
 import org.api.beacon.reply.interfaces.ReplyRequestDto;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 
@@ -16,6 +18,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Entity(name = "TB_REPLY")
+@DynamicInsert // DDL 유지를 위해 추가(Default값 적용시 사용해야함)
 public class Reply {
 
     // 댓글 아이디(PK, AI)
@@ -35,6 +38,11 @@ public class Reply {
     // 댓글 내용
     @Column(name = "reply_detail")
     private String replyDetail;
+
+    // 댓글 내용
+    @Column(name = "reply_state")
+    @ColumnDefault("true") // true : 활성화, false : 삭제 처리
+    private Boolean replyState;
 
     // 작성자 아이디
     @Column(name = "crt_id")
@@ -66,6 +74,13 @@ public class Reply {
 
     public void updateReply(ReplyRequestDto replyRequestDto) {
         this.replyDetail = replyRequestDto.getReplyDetail();
+        this.updId = replyRequestDto.getUpdId();
+        this.updDt = replyRequestDto.getUpdDt();
+    }
+
+
+    public void deleteReply(ReplyRequestDto replyRequestDto) {
+        this.replyState = false;
         this.updId = replyRequestDto.getUpdId();
         this.updDt = replyRequestDto.getUpdDt();
     }

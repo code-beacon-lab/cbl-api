@@ -45,4 +45,13 @@ public class ReplyApiController {
         URI updateUri = selfLinkBuilder.toUri();
         return ResponseEntity.created(updateUri).body(newReply);
     }
+
+    // 댓글 삭제
+    @PutMapping(value = "/deleteReply")
+    public ResponseEntity<Reply> deleteReply(@RequestBody ReplyRequestDto replyRequestDto) {
+        Reply newReply = replyService.deleteReply(replyRequestDto);
+        WebMvcLinkBuilder selfLinkBuilder = linkTo(ReplyApiController.class).slash(newReply.getId());
+        URI deleteUri = selfLinkBuilder.toUri();
+        return ResponseEntity.created(deleteUri).body(newReply);
+    }
 }

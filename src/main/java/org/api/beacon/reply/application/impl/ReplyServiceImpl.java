@@ -53,4 +53,16 @@ public class ReplyServiceImpl implements ReplyService {
 
         return replyStore.updateReply(replyOrigin);
     }
+
+
+    @Override
+    @Transactional
+    public Reply deleteReply(ReplyRequestDto replyRequestDto) {
+
+        Reply replyOrigin = replyRepository.findById(replyRequestDto.getId()).orElseThrow(() -> new IllegalArgumentException("삭제할 ID 의 스터디가 없습니다 : " + replyRequestDto.getId() ));
+
+        replyOrigin.deleteReply(replyRequestDto);
+
+        return replyStore.deleteReply(replyOrigin);
+    }
 }

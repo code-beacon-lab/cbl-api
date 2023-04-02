@@ -11,4 +11,5 @@ public interface ReplyService {
     List<Reply> retrieveAllReply(Long studyId);
     Reply createReply(ReplyRequestDto replyRequestDto);
     Reply updateReply(ReplyRequestDto replyRequestDto);
+    Reply deleteReply(ReplyRequestDto replyRequestDto);
 }

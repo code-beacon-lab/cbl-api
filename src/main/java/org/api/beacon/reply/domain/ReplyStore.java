@@ -6,4 +6,7 @@ public interface ReplyStore {
 
     // 댓글 수정
     Reply updateReply(Reply reply);
+
+    // 댓글 수정
+    Reply deleteReply(Reply reply);
 }

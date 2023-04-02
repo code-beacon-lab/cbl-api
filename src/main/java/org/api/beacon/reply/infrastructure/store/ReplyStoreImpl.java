@@ -24,4 +24,9 @@ public class ReplyStoreImpl implements ReplyStore {
         return replyRepository.save(reply);
     }
 
+    @Override
+    public Reply deleteReply(Reply reply) {
+        return replyRepository.save(reply);
+    }
+
 }
